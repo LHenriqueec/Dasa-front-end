@@ -1,0 +1,67 @@
+<div class="modal fade" id="modal-cliente" tabindex="-1" role="dialog" aria-labelledby="modalClienteLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="modalClienteLabel">Cadastrar Cliente</h4>
+      </div>
+      <div class="modal-body clearfix">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="cnpj">CNPJ</label>
+            <input type="text" id="cnpj" class="form-control" placeholder="CNPJ" [(ngModel)]="cliente.cnpj" >
+          </div>
+          <div class="form-group">
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" class="form-control" placeholder="Nome" [(ngModel)]="cliente.nome" >
+          </div>
+        </div>
+       
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="uf">UF</label>
+            <select id="uf" class="form-control" [(ngModel)]="cliente.endereco.uf" >
+              <option value="df">DF</option>
+              <option value="go">GO</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="cidade">Cidade</label>
+            <input type="text" id="cidade" class="form-control" placeholder="Cidade" [(ngModel)]="cliente.endereco.cidade" >
+          </div>
+          <div class="form-group">
+            <label for="bairro">Bairro</label>
+            <input type="text" id="bairro" class="form-control" placeholder="Bairro" [(ngModel)]="cliente.endereco.bairro" >
+          </div>
+          <div class="form-group">
+            <label for="logradouro">Endereço</label>
+            <input type="text" id="logradouro" class="form-control" placeholder="Endereço" [(ngModel)]="cliente.endereco.logradouro" >
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="responsavel">Responsável</label>
+            <input type="text" id="responsavel" class="form-control" placeholder="Responsável" [(ngModel)]="cliente.contato.responsavel" >
+          </div>
+          <div class="form-group">
+            <label for="telefone">Telefone</label>
+            <input type="text" id="telefone" class="form-control" placeholder="Telefone" [(ngModel)]="cliente.contato.telefone" >
+          </div>
+          <div class="form-group">
+            <label for="celular">Celular</label>
+            <input type="text" id="celular" class="form-control" placeholder="Celular" [(ngModel)]="cliente.contato.celular" >
+          </div>
+          <div class="form-group">
+            <label for="email">E-mail</label>
+            <input type="text" id="email" class="form-control" placeholder="E-mail" [(ngModel)]="cliente.contato.email" >
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+        <button type="button" class="btn btn-primary" (click)="addCliente()">Salvar</button>
+      </div>
+    </div>
+  </div>
+</div>

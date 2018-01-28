@@ -1,0 +1,36 @@
+<app-modal-produto></app-modal-produto>
+
+<div class="produtos-menu">
+  <ul class="list-menu-produtos">
+    <li><a type="button" class="btn btn-link" data-toggle="modal" data-target="#modal-produto"><span class="glyphicon glyphicon-plus"></span> Novo Produto</a></li>
+  </ul>
+</div>
+
+<div class="col-md-12">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <div class="col-md-2 pull-right">
+        <input type="text" class="form-control" placeholder="Pesquisar Produto">
+      </div>
+      <h4>
+        Produtos
+      </h4>
+    </div>
+    <div class="panel-body">
+      <table class="table table-hover">
+        <thead>
+          <th>Código</th>
+          <th>Produto</th>
+          <th>Quantidade</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let produto of produtos">
+            <td>{{ produto.codigo }}</td>
+            <td>{{ produto.nome | uppercase }}</td>
+            <td>{{ produto.quantidade }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,51 @@
+<app-modal-recibo></app-modal-recibo>
+<div class="recibo-menu">
+  <ul class="list-menu-recibo">
+      <li><a type="button" class="btn btn-link" data-toggle="modal" data-target="#modal-recibo"><span class="glyphicon glyphicon-plus"></span> Novo Recibo</a></li>
+  </ul>
+</div>
+<div class="col-md-6">
+  <div class="panel panel-success">
+    <div class="panel-heading">
+      <h4>Produtos</h4>
+    </div>
+    <div class="panel-body">
+      <app-produtos-recibo></app-produtos-recibo>
+    </div>
+  </div>
+</div>
+<div class="col-md-6">
+  <div class="panel panel-danger">
+    <div class="panel-heading">
+      <h4>Clientes sem Compra</h4>
+    </div>
+    <div class="panel-body">
+     <app-clientes-sem-compra></app-clientes-sem-compra>
+    </div>
+  </div>
+</div>
+<div class="col-md-12">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h4>Recibos</h4>
+    </div>
+    <div class="panel-body">
+      <table class="table table-hover">
+        <thead>
+          <th>Recibo</th>
+          <th>Cliente</th>
+          <th>Emissão</th>
+          <th>#</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let recibo of getRecibos()">
+            <td>{{ recibo.numero }}</td>
+            <td>{{ recibo.cliente }}</td>
+            <td>{{ recibo.emissao }}</td>
+            <td>OPÇÕES</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+.recibo-menu {
+    background-color: #2d353b;
+    height: 50px;
+    margin-bottom: 10px;
+}
+tfoot td {
+    font-weight: bold;
+}
+.list-menu-recibo {
+    list-style: none;
+    display: inline;
+}
+.list-menu-recibo li {
+    color: white;
+    padding-right: 20px;
+    float: left;
+    margin-top: 15px
+}
+.list-menu-recibo li:hover a {
+    color: #1c2327;
+    text-decoration-line: none;
+}
+.list-menu-recibo a {
+    color: #8b9698;
+}
