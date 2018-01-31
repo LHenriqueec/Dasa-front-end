@@ -1,22 +1,18 @@
 import { Injectable } from '@angular/core';
 
+import { Recibo } from '../entity/recibo';
+import { Cliente } from '../entity/cliente';
+
 @Injectable()
 export class ReciboService {
 
-  constructor() { }
+  private recibos: Recibo[] = [];
 
-  getRecibos() {
-    return [
-      {
-        numero: '2007',
-        cliente: 'G18 EXAME MEGA TAGUATINGA',
-        emissao: '20/01/2018'
-      },
-      {
-        numero: '2008',
-        cliente: 'O30 EXAME MEGA ASA SUL',
-        emissao: '21/01/2018'
-      }
-    ];
+  constructor() {
+    this.recibos.push(new Recibo(new Date('01/29/2018'), '2004',new Cliente('g18 exame mega taguatinga')))
+  }
+
+  getRecibos(): Recibo[] {
+    return this.recibos;
   }
 }

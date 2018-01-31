@@ -1,12 +1,24 @@
-<table class="table table-hover table-condensed">
-    <thead>
-      <th>Cliente</th>
-      <th>Bairro</th>
-    </thead>
-    <tbody>
-      <tr *ngFor="let cliente of clientesSemCompra">
-        <td>{{ cliente.nome | uppercase }}</td>
-        <td>{{ cliente.endereco.bairro | uppercase }}</td>
-      </tr>
-    </tbody>
-  </table>
+<div class="col-md-6">
+  <div class="panel panel-danger">
+    <div class="panel-heading">
+      <div class="col-md-4 pull-right">
+        <input type="text" class="form-control" placeholder="Pesquisar Cliente" #searchCliente (keyup)="0">
+      </div>
+      <h4>Clientes sem Compra</h4>
+    </div>
+    <div class="panel-body">
+      <table class="table table-hover table-condensed">
+        <thead>
+          <th>Cliente</th>
+          <th>Bairro</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let cliente of clientesSemCompra | filterCliente: searchCliente.value">
+            <td>{{ cliente.nome | uppercase }}</td>
+            <td>{{ cliente.endereco.bairro | uppercase }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

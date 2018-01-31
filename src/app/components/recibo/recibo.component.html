@@ -14,19 +14,15 @@
     </div>
   </div>
 </div>
-<div class="col-md-6">
-  <div class="panel panel-danger">
-    <div class="panel-heading">
-      <h4>Clientes sem Compra</h4>
-    </div>
-    <div class="panel-body">
-     <app-clientes-sem-compra></app-clientes-sem-compra>
-    </div>
-  </div>
-</div>
+
+<app-clientes-sem-compra></app-clientes-sem-compra>
+
 <div class="col-md-12">
   <div class="panel panel-primary">
     <div class="panel-heading">
+      <div class="col-md-2 pull-right">
+        <input type="text" class="form-control" placeholder="Pesquisar Recibo" #searchRecibo (keyup)="0">
+      </div>
       <h4>Recibos</h4>
     </div>
     <div class="panel-body">
@@ -38,10 +34,10 @@
           <th>#</th>
         </thead>
         <tbody>
-          <tr *ngFor="let recibo of getRecibos()">
+          <tr *ngFor="let recibo of recibos | filterRecibo: searchRecibo.value">
             <td>{{ recibo.numero }}</td>
-            <td>{{ recibo.cliente }}</td>
-            <td>{{ recibo.emissao }}</td>
+            <td>{{ recibo.cliente.nome | uppercase }}</td>
+            <td>{{ recibo.emissao | date: 'dd/MM/yyyy' }}</td>
             <td>OPÇÕES</td>
           </tr>
         </tbody>

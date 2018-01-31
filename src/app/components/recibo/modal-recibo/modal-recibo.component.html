@@ -14,13 +14,13 @@
               <div class="panel panel-success">
                 <div class="panel-heading">
                   <div class="col-md-4 pull-right">
-                    <input type="text" class="form-control" placeholder="Pesquisar Cliente">
+                    <input type="text" class="form-control" placeholder="Pesquisar Cliente" #searchCliente (keyup)="0">
                   </div>
                   <h4>Selecionar Cliente</h4>
                 </div>
                 <table class="table table-hover table-condensed">
                   <tbody>
-                    <tr *ngFor="let cliente of getClientes()">
+                    <tr *ngFor="let cliente of getClientes() | filterCliente: searchCliente.value">
                       <td>{{ cliente.cnpj }}</td>
                       <td>{{ cliente.nome | uppercase }}</td>
                       <td>{{ cliente.endereco.bairro | uppercase }}</td>

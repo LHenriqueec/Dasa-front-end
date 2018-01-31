@@ -7,8 +7,9 @@ export class Recibo {
     cliente: Cliente;
     produtos: Produto[];
 
-    constructor() {
+    constructor(emissao?: Date, numero?: string,cliente?: Cliente, produto?: Produto[]) {
         this.emissao = new Date();
+        this.numero = numero;
         this.cliente = new Cliente('g18 exame mega taguatinga', '');
         this.produtos = [];
     }

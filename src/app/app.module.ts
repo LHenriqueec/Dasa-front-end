@@ -19,6 +19,10 @@ import { ProdutoService } from './services/produto.service';
 import { ClienteService } from './services/cliente.service';
 import { AppRoutingModule } from './/app-routing.module';
 
+import { FilterProdutoPipe } from './pipes/filter-produto.pipe';
+import { FilterClientePipe } from './pipes/filter-cliente.pipe';
+import { FilterReciboPipe } from './pipes/filter-recibo.pipe';
+
 
 @NgModule({
   declarations: [
@@ -32,7 +36,10 @@ import { AppRoutingModule } from './/app-routing.module';
     ModalProdutoComponent,
     ModalReciboComponent,
     ModalClienteComponent,
-    DashboardComponent
+    DashboardComponent,
+    FilterProdutoPipe,
+    FilterClientePipe,
+    FilterReciboPipe
   ],
   imports: [
     BrowserModule,

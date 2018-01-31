@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
 import { ReciboService } from '../../services/recibo.service';
+import { Recibo } from '../../entity/recibo';
 
 @Component({
   selector: 'app-recibo',
@@ -10,12 +11,15 @@ import { ReciboService } from '../../services/recibo.service';
 })
 export class ReciboComponent implements OnInit {
 
+  recibos: Recibo[];
+
   constructor(private reciboService: ReciboService) { }
 
   ngOnInit() {
+    this.getRecibos();
   }
 
   getRecibos() {
-    return this.reciboService.getRecibos();
+    this.recibos = this.reciboService.getRecibos();
   }
 }

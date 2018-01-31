@@ -10,7 +10,7 @@
   <div class="panel panel-primary">
     <div class="panel-heading">
       <div class="col-md-2 pull-right">
-        <input type="text" class="form-control" placeholder="Pesquisar Produto">
+        <input type="text" class="form-control" placeholder="Pesquisar Produto" #searchProduto (keyup)="0">
       </div>
       <h4>
         Produtos
@@ -24,7 +24,7 @@
           <th>Quantidade</th>
         </thead>
         <tbody>
-          <tr *ngFor="let produto of produtos">
+          <tr *ngFor="let produto of produtos | filterProduto: searchProduto.value">
             <td>{{ produto.codigo }}</td>
             <td>{{ produto.nome | uppercase }}</td>
             <td>{{ produto.quantidade }}</td>

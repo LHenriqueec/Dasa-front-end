@@ -7,7 +7,8 @@ export class Cliente {
     endereco: Endereco;
     contato: Contato;
 
-    constructor(nome: string, bairro: string) {
+    constructor(nome: string, bairro?: string) {
+        this.cnpj = '';
         this.nome = nome;
         this.endereco = new Endereco(bairro);
         this.contato = new Contato();
