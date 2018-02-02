@@ -24,7 +24,7 @@
           <th>Quantidade</th>
         </thead>
         <tbody>
-          <tr *ngFor="let produto of produtos | filterProduto: searchProduto.value">
+          <tr *ngFor="let produto of produtos">
             <td>{{ produto.codigo }}</td>
             <td>{{ produto.nome | uppercase }}</td>
             <td>{{ produto.quantidade }}</td>

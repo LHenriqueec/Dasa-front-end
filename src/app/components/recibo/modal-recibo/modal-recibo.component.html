@@ -56,21 +56,7 @@
               <div class="col-md-12">
                 <div class="panel panel-success">
                   <div class="panel-heading">
-      
-                    <div class="form-inline">
-                      <div class="form-group">
-                        <label for="produto">Produto:</label>
-                        <input type="text" id="produto" class="form-control" placeholder="Pesquisar Produto" [(ngModel)]="produto.nome" (keyup)="searchProduto()">
-                      </div>
-                      <div class="form-group">
-                        <label for="quantidade">Quantidade:</label>
-                        <input type="text" id="quantidade" class="form-control" placeholder="Quantidade">
-                      </div>
-                      <div class="form-group">
-                        <button class="btn btn-success" (click)="addProduto()">Adicionar</button>
-                      </div>
-                    </div>
-      
+                    <h5>Produtos</h5>
                   </div>
                   <div class="panel-body">
                     <table class="table table-compresed table-hover">
@@ -95,6 +81,40 @@
                 </div>
               </div>
 
+              <div class="col-md-12">
+                <div class="panel panel-primary">
+                  <div class="panel-heading">
+                    <div class="col-md-3 pull-right">
+                      <input type="text" class="form-control" placeholder="Pesquisar Produto">                    
+                    </div>
+                    <h5>Produtos Disponíveis</h5>
+                  </div>
+                  <div class="panel-body">
+                    <table class="table table-hover table-condensed">
+                      <thead>
+                        <th style="width:10%">Código</th>
+                        <th>Produto</th>
+                        <th style="width:10%">Saldo</th>
+                        <th style="width:10%">Quantidade</th>
+                        <th style="width:10%"></th>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let produto of getProdutos()">
+                          <td>{{ produto.codigo }}</td>
+                          <td>{{ produto.nome | uppercase }}</td>
+                          <td>{{ produto.quantidade }}</td>
+                          <td style="text-align: center">
+                            <input type="number" class="form-control">
+                          </td>
+                          <td>
+                            <button class="btn btn-primary">Inserir</button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -107,4 +127,5 @@
       </div>
     </div>
   </div>
+  
 </div>

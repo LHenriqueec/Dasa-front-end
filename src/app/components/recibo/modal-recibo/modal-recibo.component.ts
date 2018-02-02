@@ -2,6 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
 import { ReciboService } from '../../../services/recibo.service';
 import { ClienteService } from '../../../services/cliente.service';
+import { ProdutoService } from '../../../services/produto.service';
 import { Recibo } from '../../../entity/recibo';
 import { Produto } from '../../../entity/produto';
 import { Cliente } from '../../../entity/cliente';
@@ -16,7 +17,7 @@ export class ModalReciboComponent implements OnInit {
   recibo: Recibo;
   produto: Produto;
 
-  constructor(private reciboService: ReciboService, private clienteService: ClienteService) {
+  constructor(private reciboService: ReciboService, private clienteService: ClienteService, private produtoService: ProdutoService) {
     this.recibo = new Recibo();
     this.produto = new Produto('', '', 0);
   }
@@ -36,8 +37,8 @@ export class ModalReciboComponent implements OnInit {
     this.recibo.cliente = cliente;
   }
 
-  searchProduto() {
-    console.log(this.produto.nome);
+  getProdutos(): Produto[] {
+    return this.produtoService.getProdutos();
   }
 
   getClientes(): Cliente[] {
