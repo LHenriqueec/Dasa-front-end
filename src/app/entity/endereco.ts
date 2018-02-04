@@ -3,7 +3,7 @@ export class Endereco {
     bairro: string = '';
     logradouro: string = '';
 
-    constructor(bairro: string) {
+    constructor(bairro?: string) {
         this.bairro = bairro;
     }
 }

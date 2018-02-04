@@ -1,20 +1,41 @@
 import { Cliente } from './cliente';
-import { Produto } from './produto';
+import { ItemRecibo } from './item-recibo';
 
 export class Recibo {
     emissao: Date;
-    numero: string;
+    numero: string = '';
     cliente: Cliente;
-    produtos: Produto[];
+    itens: ItemRecibo[];
+    total: number;
 
-    constructor(emissao?: Date, numero?: string,cliente?: Cliente, produto?: Produto[]) {
-        this.emissao = new Date();
+    constructor(numero?: string) {
         this.numero = numero;
-        this.cliente = new Cliente('g18 exame mega taguatinga', '');
-        this.produtos = [];
+        this.emissao = new Date();
+        this.cliente = new Cliente();
+        this.itens = [];
+        this.total = 0;
     }
 
-    addProduto(produto: Produto): void {
-        this.produtos.push(produto);
+    addItem(item: ItemRecibo): void {
+        if(!this.itens) this.itens = [];
+
+        if(this.checkExist(item)) return;
+
+        this.itens.push(item);
+        this.total += item.quantidade;
+    }
+
+    /**
+     * Verifica se o item já está inserido. Caso verdadeiro, é adicionado o saldo no item existente
+     * @param item ItemRecibo que será procurado na lista
+     */
+    private checkExist(item: ItemRecibo): boolean {
+        let itemFound: ItemRecibo = this.itens.find((itemRecibo) => {
+            return itemRecibo.produto == item.produto;
+        })
+        
+        if(!itemFound) return false;
+        itemFound.quantidade += item.quantidade;
+        return true;
     }
 }
