@@ -5,12 +5,9 @@ import { Cliente } from '../entity/cliente';
 @Injectable()
 export class ClienteService {
 
-  clientes: Cliente[] = [
-    new Cliente('g18 exame mega taguatinga', 'taguatinga'),
-    new Cliente('o30 exame mega asa sul', 'asa sul')
-  ]
+  clientes: Cliente[] = [];
 
-  constructor() { }
+  constructor() { this.test_init(); }
 
   addCliente(cliente: Cliente) {
     this.clientes.push(cliente);
@@ -21,9 +18,17 @@ export class ClienteService {
   }
 
   getClientesSemCompra(): Cliente[] {
-    return [
-      new Cliente('g18 exame mega taguatinga', 'taguatinga'),
-      new Cliente('o30 exame mega asa sul', 'asa sul')
-    ];
+    return this.clientes;
+  }
+
+  //TODO: Buscar dados no servidor
+  private test_init() {
+    let c1: Cliente = new Cliente('123', 'g18 exame mega taguatinga');
+    c1.endereco.bairro = 'taguatinga';
+
+    let c2: Cliente = new Cliente('456', 'o30 exame mega asa sul');
+    c2.endereco.bairro = 'asa sul';
+
+    this.clientes.push(c1, c2);
   }
 }
