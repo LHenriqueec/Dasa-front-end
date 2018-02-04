@@ -7,12 +7,21 @@ import { Cliente } from '../entity/cliente';
 export class ReciboService {
 
   private recibos: Recibo[] = [];
+  private lastNumber = '1000';
 
   constructor() {
-    this.recibos.push(new Recibo(new Date('01/29/2018'), '2004',new Cliente('g18 exame mega taguatinga')))
   }
 
   getRecibos(): Recibo[] {
     return this.recibos;
+  }
+
+  addRecibo(recibo: Recibo) {
+    this.recibos.push(recibo);
+    this.lastNumber += Number.parseInt(this.lastNumber);
+  }
+
+  getLastNumber(): string {
+    return this.lastNumber;
   }
 }

@@ -10,6 +10,10 @@
         <div id="carousel-recibo" class="carousel slide" data-ride="carousel" data-interval="">
           <div class="carousel-inner" role="listbos">
             <div class="item active">
+
+              <div class="col-md-12">
+                Formulário
+              </div>
               
               <div class="panel panel-success">
                 <div class="panel-heading">
@@ -62,17 +66,17 @@
                     <table class="table table-compresed table-hover">
                       
                       <tbody>
-                        <tr *ngFor="let produto of recibo.produtos">
-                          <td>{{ produto.codigo }}</td>
-                          <td>{{ produto.nome | uppercase }}</td>
-                          <td>{{ produto.quantidade }} CX</td>
+                        <tr *ngFor="let item of recibo.itens">
+                          <td>{{ item.produto.codigo }}</td>
+                          <td>{{ item.produto.nome | uppercase }}</td>
+                          <td>{{ item.quantidade }}</td>
                           <td>Opções</td>
                         </tr>
                       </tbody>
                       <tfoot>
                         <tr>
-                          <td colspan="3">Total</td>
-                          <td>500 CX</td>
+                          <td colspan="2">Total</td>
+                          <td colspan="2">{{ recibo.total }}</td>
                         </tr>
                       </tfoot>
                     </table>
@@ -104,10 +108,10 @@
                           <td>{{ produto.nome | uppercase }}</td>
                           <td>{{ produto.quantidade }}</td>
                           <td style="text-align: center">
-                            <input type="number" class="form-control">
+                            <input type="number" class="form-control" #quantidade (keyup)="0" >
                           </td>
                           <td>
-                            <button class="btn btn-primary">Inserir</button>
+                            <button class="btn btn-primary" (click)="addItem(produto, quantidade.value); quantidade.value=''">Inserir</button>
                           </td>
                         </tr>
                       </tbody>

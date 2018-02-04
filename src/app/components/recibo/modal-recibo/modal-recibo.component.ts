@@ -6,6 +6,7 @@ import { ProdutoService } from '../../../services/produto.service';
 import { Recibo } from '../../../entity/recibo';
 import { Produto } from '../../../entity/produto';
 import { Cliente } from '../../../entity/cliente';
+import { ItemRecibo } from '../../../entity/item-recibo';
 
 @Component({
   selector: 'app-modal-recibo',
@@ -15,22 +16,26 @@ import { Cliente } from '../../../entity/cliente';
 export class ModalReciboComponent implements OnInit {
 
   recibo: Recibo;
-  produto: Produto;
+  total: number = 0;
 
   constructor(private reciboService: ReciboService, private clienteService: ClienteService, private produtoService: ProdutoService) {
-    this.recibo = new Recibo();
-    this.produto = new Produto('', '', 0);
+    this.recibo = new Recibo(this.reciboService.getLastNumber());
   }
 
   ngOnInit() {
   }
 
-  addProduto() {
-    this.recibo.addProduto(this.produto);
-  }
 
   addRecibo() {
-    
+    this.reciboService.addRecibo(this.recibo);
+    this.recibo = new Recibo();
+  }
+
+  addItem(produto: Produto, quantidade) {
+    quantidade = Number.parseInt(quantidade);
+    produto.quantidade -= quantidade;
+    let item: ItemRecibo = new ItemRecibo(produto, quantidade);
+    this.recibo.addItem(item);
   }
 
   selectCliente(cliente) {
