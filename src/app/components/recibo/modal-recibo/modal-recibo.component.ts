@@ -32,10 +32,11 @@ export class ModalReciboComponent implements OnInit {
   }
 
   addItem(produto: Produto, quantidade) {
-    quantidade = Number.parseInt(quantidade);
-    produto.quantidade -= quantidade;
-    let item: ItemRecibo = new ItemRecibo(produto, quantidade);
-    this.recibo.addItem(item);
+    this.recibo.addItem(produto, quantidade);
+  }
+
+  removeItem(index: number) {
+    this.recibo.removeItem(index);
   }
 
   selectCliente(cliente) {

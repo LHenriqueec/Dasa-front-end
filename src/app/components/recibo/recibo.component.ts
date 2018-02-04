@@ -19,6 +19,14 @@ export class ReciboComponent implements OnInit {
     this.getRecibos();
   }
 
+  removeRecibo(index: number) {
+    let recibo: Recibo = this.recibos.splice(index, 1)[0];
+    recibo.itens.forEach((item, i) => {
+      console.log(i + " - " + item.produto.nome);
+      recibo.removeItem(i);
+    });
+  }
+
   getRecibos() {
     this.recibos = this.reciboService.getRecibos();
   }

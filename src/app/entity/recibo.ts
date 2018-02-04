@@ -1,5 +1,6 @@
 import { Cliente } from './cliente';
 import { ItemRecibo } from './item-recibo';
+import { Produto } from './produto';
 
 export class Recibo {
     emissao: Date;
@@ -16,13 +17,24 @@ export class Recibo {
         this.total = 0;
     }
 
-    addItem(item: ItemRecibo): void {
+    addItem(produto: Produto, quantidade): void {
         if(!this.itens) this.itens = [];
+        
+        quantidade = Number.parseInt(quantidade);
+        let item: ItemRecibo = new ItemRecibo(produto, quantidade);
 
+        item.produto.quantidade -= item.quantidade;
+        this.total += item.quantidade;
         if(this.checkExist(item)) return;
 
         this.itens.push(item);
-        this.total += item.quantidade;
+    }
+
+    removeItem(index: number) {
+        let item: ItemRecibo = this.itens.splice(index, 1)[0];
+        item.produto.quantidade += item.quantidade;
+
+        this.total -= item.quantidade;
     }
 
     /**

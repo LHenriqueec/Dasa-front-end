@@ -8,11 +8,11 @@
     <tr *ngFor="let produto of produtos">
       <td>{{ produto.codigo }}</td>
       <td>{{ produto.nome | uppercase }}</td>
-      <td align="right">{{ produto.quantidade }} CX</td>
+      <td align="right">{{ produto.quantidade }}</td>
     </tr>
      </tbody>
   <tfoot>
     <td colspan="2">Total</td>
-    <td align="right">{{ total }} CX</td>
+    <td align="right">{{ total }}</td>
   </tfoot>
 </table>
