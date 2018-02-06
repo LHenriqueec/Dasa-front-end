@@ -28,7 +28,7 @@ export class ModalReciboComponent implements OnInit {
 
   addRecibo() {
     this.reciboService.addRecibo(this.recibo);
-    this.recibo = new Recibo();
+    this.recibo = new Recibo(this.reciboService.getLastNumber());
   }
 
   addItem(produto: Produto, quantidade) {

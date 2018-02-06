@@ -34,6 +34,9 @@ export class ReciboService {
     this.lastNumber = number.toString();
   }
 
+  /**
+   * 
+   */
   private loadLastNumber() {
     let number: number = 0;
     if(this.recibos.length > 0) {
