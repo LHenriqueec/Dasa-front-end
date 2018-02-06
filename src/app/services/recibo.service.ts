@@ -15,19 +15,41 @@ export class ReciboService {
     this.loadLastNumber();
   }
 
+  /**
+   * @returns Retorna a lista de Recibos
+   */
   getRecibos(): Recibo[] {
     return this.recibos;
   }
 
+  /**
+   * Adiciona o Recibo na lista e atualiza a sequência númerica para o próximo Recibo
+   * @param recibo Recibo que será adicionado na lista
+   */
   addRecibo(recibo: Recibo) {
     this.recibos.push(recibo);
     this.updateLastNumber();
   }
 
+  /**
+   * Remove o Recibo e recalcula o saldo dos produtos
+   * @param index Indice do Recibo que será Removido
+   */
+  removeRecibo(index: number) {
+    let recibo = this.recibos.splice(index, 1)[0];
+    recibo.itens.forEach(item => item.produto.quantidade += item.quantidade);
+  }
+
+  /**
+   * @returns Retorna o valor atual de lastNumber
+   */
   getLastNumber(): string {
     return this.lastNumber;
   }
 
+  /**
+   * Atualiza a sequência númerica dos Recibos
+   */
   private updateLastNumber() {
     let number: number = Number.parseInt(this.lastNumber);
     number++;
@@ -35,7 +57,7 @@ export class ReciboService {
   }
 
   /**
-   * 
+   * Carrega o último número de Recibo Gerado, caso contrário, inicia com '1000'
    */
   private loadLastNumber() {
     let number: number = 0;
