@@ -8,7 +8,7 @@ import { Cliente } from '../entity/cliente';
 export class FilterClientePipe implements PipeTransform {
 
   transform(clientes: Cliente[], search?: string): Cliente[] {
-    return this.contains(clientes, search);
+    return search ? this.contains(clientes, search) : clientes;
   }
   
   private contains(clientes: Cliente[], value: string): Cliente[] {

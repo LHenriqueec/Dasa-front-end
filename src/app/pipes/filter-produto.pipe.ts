@@ -7,8 +7,8 @@ import { Produto } from '../entity/produto';
 })
 export class FilterProdutoPipe implements PipeTransform {
 
-  transform(value: Produto[], args?: string): Produto[] {
-   return this.contains(value, args);
+  transform(produtos: Produto[], search?: string): Produto[] {
+   return search ? this.contains(produtos, search) : produtos;
   }
 
   private contains(produtos: Produto[], value: string): Produto[] {

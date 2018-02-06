@@ -7,15 +7,14 @@ import { Recibo } from '../entity/recibo';
 })
 export class FilterReciboPipe implements PipeTransform {
 
-  transform(value: Recibo[], args?: string): Recibo[] {
-    return this.contains(value, args);
+  transform(recibos: Recibo[], search?: string): any {
+    return search? this.contains(recibos, search) : recibos;
   }
 
-  private contains(recibos: Recibo[], value: string): Recibo[] {
-    value = value.toLowerCase();
+  private contains(recibos: Recibo[], search: string): Recibo[] {
     return recibos.filter(recibo => {
-      return recibo.numero.indexOf(value) >= 0
-        || recibo.cliente.nome.toLowerCase().indexOf(value) >= 0;
+      return recibo.numero.indexOf(search) >= 0
+        || recibo.cliente.nome.toLowerCase().indexOf(search) >= 0
     });
   }
 }
