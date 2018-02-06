@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 
 import { ReciboService } from '../../../services/recibo.service';
 import { ClienteService } from '../../../services/cliente.service';
@@ -13,7 +13,7 @@ import { ItemRecibo } from '../../../entity/item-recibo';
   templateUrl: './modal-recibo.component.html',
   styleUrls: ['./modal-recibo.component.css'],
 })
-export class ModalReciboComponent implements OnInit {
+export class ModalReciboComponent {
 
   recibo: Recibo;
   total: number = 0;
@@ -22,10 +22,6 @@ export class ModalReciboComponent implements OnInit {
     this.recibo = new Recibo(this.reciboService.getLastNumber());
   }
 
-  ngOnInit() {
-  }
-
-
   addRecibo() {
     this.reciboService.addRecibo(this.recibo);
     this.recibo = new Recibo(this.reciboService.getLastNumber());
@@ -33,6 +29,10 @@ export class ModalReciboComponent implements OnInit {
 
   addItem(produto: Produto, quantidade) {
     this.recibo.addItem(produto, quantidade);
+  }
+
+  editRecibo(index: number) {
+    // TODO: Implementar Edição de Recibo
   }
 
   removeItem(index: number) {
